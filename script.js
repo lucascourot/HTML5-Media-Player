@@ -1,12 +1,17 @@
-var playLink = document.querySelector('form#media-player input[type=submit]');
-var videoUrl = document.querySelector('form#media-player input[type=url]');
-var video    = document.querySelector('form#media-player video');
+var urlInput     = document.querySelector('#media-player input[name=url]');
+var videoField   = document.querySelector('#media-player video');
+var submitButton = document.querySelector('#media-player input[type=submit]');
+var stopButton  = document.querySelector('#stop');
 
-var loadVideo = function(event) {
+var playVideo = function(event) {
     event.preventDefault();
 
-    video.setAttribute('src', videoUrl.value);
-    video.play();
+    videoField.setAttribute('src', urlInput.value);
+    videoField.play();
 };
 
-playLink.addEventListener('click', loadVideo);
+submitButton.addEventListener('click', playVideo);
+
+stopButton.addEventListener('click', function() {
+    videoField.pause();
+});
